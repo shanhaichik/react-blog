@@ -3,3 +3,4 @@
 # Ignore build folder
 static
 node_modules
+webpack
