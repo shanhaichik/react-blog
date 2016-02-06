@@ -47,7 +47,8 @@ module.exports = function makeWebpackConfig(options) {
     }
     else if (BUILD) {
         config.entry = [
-            path.resolve(__dirname, '../app/app.js')
+            path.resolve(__dirname, '../app/app.js'),
+            path.resolve(__dirname, '../app/style/app.css')
         ];
     }
     else if (TEST) {
@@ -151,7 +152,7 @@ module.exports = function makeWebpackConfig(options) {
 
     var cssLoader = {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]','postcss')
+        loader: ExtractTextPlugin.extract('style', 'css?postcss&modules&importLoaders=2&localIdentName=[local]___[hash:base64:5]')
     };
 
     // Skip loading css in test mode

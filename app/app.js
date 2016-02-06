@@ -9,6 +9,11 @@ injectTapEventPlugin();
 import Root from 'Root';
 
 /*
+ * Main CSS
+ * */
+import './style/app.css';
+
+/*
 * Enable Browser History
 * */
 const history = new BrowserHistory();
