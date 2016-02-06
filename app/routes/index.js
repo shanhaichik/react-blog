@@ -4,15 +4,11 @@ import redirectBackAfter from '../utils/redirectBackAfter';
 import fillStore from '../utils/fillStore';
 
 // Import routes
-import App          from '../components/App';
+import App from '../components/App';
 import NotFoundPage from '../components/NotFound/NotFoundPage';
 
 const routes = (
     <Route component={App}>
-        <Route requireAuth>
-            <Route path="/home" component={HomePage} />
-        </Route>
-
         <Route path="*" component={NotFoundPage} />
     </Route>
 );
@@ -31,11 +27,7 @@ function walk(routes, cb) {
 export default (store, client) => {
     return walk(Route.createRouteFromReactElement(routes), route => {
         route.onEnter = (nextState, transition) => {
-            const loggedIn = !!store.getState().auth.token;
-
-            if (route.requireAuth && !loggedIn) {
-                transition.to(...redirectBackAfter('/login', nextState));
-            } else if (client) {
+            if (client) {
                 fillStore(store, nextState, [route.component]);
             }
         };

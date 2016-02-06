@@ -28,7 +28,7 @@ module.exports = function makeWebpackConfig(options) {
     config.context = __dirname + "/app";
 
     config.resolve =  {
-        modulesDirectories: ["node_modules", "app"],
+        modulesDirectories: ["node_modules", "app","app/components"],
         extensions: ["", ".js", ".css"]
     };
 

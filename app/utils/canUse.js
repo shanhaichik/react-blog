@@ -9,9 +9,7 @@
  * @providesModule ExecutionEnvironment
  */
 
-'use strict';
-
-var canUseDOM = !!(
+const canUseDOM = !!(
     typeof window !== 'undefined' &&
     window.document &&
     window.document.createElement
@@ -23,9 +21,9 @@ var canUseDOM = !!(
  * whether or not they are in a Worker, even if they never include the main
  * `ReactWorker` dependency.
  */
-var ExecutionEnvironment = {
+const ExecutionEnvironment = {
 
-    canUseDOM: canUseDOM,
+    canUseDOM,
 
     canUseWorkers: typeof Worker !== 'undefined',
 

@@ -1,10 +1,11 @@
 /* eslint-env browser */
+/* eslint no-param-reassign: 0 */
 import { canUseDOM } from './canUse';
 
 /*
  * Helper для работы с cookies
  * */
-let cookie = {
+const cookie = {
     set({ name, value = '', path = '/', domain = '', expires = '' }) {
         if (!canUseDOM) { return; }
 
@@ -25,12 +26,12 @@ let cookie = {
     },
 
     get(name) {
-        var re = new RegExp(['(?:^|; )',
+        const re = new RegExp(['(?:^|; )',
             name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1'),
             '=([^;]*)'
         ].join(''));
 
-        var matches = document.cookie.match(re);
+        const matches = document.cookie.match(re);
 
         return matches ? decodeURIComponent(matches[1]) : undefined;
     }
