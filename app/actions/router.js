@@ -1,6 +1,6 @@
 import {
     ROUTER_STATE_CHANGE
-} from '../constants/ActionTypes';
+} from 'constants/ActionTypes';
 
 export function routerStateChange(state) {
     return {

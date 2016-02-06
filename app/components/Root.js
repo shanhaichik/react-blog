@@ -9,7 +9,9 @@ import routes from 'routes';
 /*
 * Create store
 * */
-const store = createRedux({});
+const store = createRedux({
+    auth:{}
+});
 
 export default class Root extends Component {
 

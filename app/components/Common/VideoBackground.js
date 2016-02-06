@@ -4,9 +4,6 @@ import styles from './VideoBackground.css';
 
 @CSSModules(styles)
 export default class VideoBackground extends Component {
-    constructor (props) {
-        super(props);
-    }
 
     static propTypes = {
         video: PropTypes.string.isRequired
