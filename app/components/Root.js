@@ -1,12 +1,15 @@
-import { Component, PropTypes } from 'react';
+import React,{ Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import { createRedux } from '../utils/redux';
 
+import { routerStateChange } from 'actions/router';
+import routes from 'routes';
+
 /*
 * Create store
 * */
-const store = createRedux();
+const store = createRedux({});
 
 export default class Root extends Component {
 
@@ -23,7 +26,7 @@ export default class Root extends Component {
 
                     onUpdate={function () {
                        store.dispatch(routerStateChange(this.state));
-                     }}
+                    }}
                 />
             </Provider>
         );

@@ -4,11 +4,12 @@ import redirectBackAfter from '../utils/redirectBackAfter';
 import fillStore from '../utils/fillStore';
 
 // Import routes
-import App from '../components/App';
-import NotFoundPage from '../components/NotFound/NotFoundPage';
+import App from 'App';
+import NotFoundPage from 'NotFound/NotFoundPage';
 
 const routes = (
     <Route component={App}>
+        <Route path="/" component={Main} />
         <Route path="*" component={NotFoundPage} />
     </Route>
 );

@@ -20,6 +20,6 @@ const history = new BrowserHistory();
 
 
 ReactDOM.render(
-    <Root {...history} />,
+    <Root history={history} />,
     document.getElementById('root')
 );
