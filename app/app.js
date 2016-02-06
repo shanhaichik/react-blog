@@ -13,9 +13,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 
-const openSansObserver = new FontFaceObserver('Roboto', {});
+const RobotoObserver = new FontFaceObserver('Roboto', {});
 
-openSansObserver.check().then(() => {
+RobotoObserver.check().then(() => {
     document.body.classList.add(style['js-roboto-loaded']);
 }, () => {
     document.body.classList.remove(style['js-roboto-loaded']);
