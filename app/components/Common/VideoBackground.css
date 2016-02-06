@@ -1,0 +1,30 @@
+.background {
+    position: absolute;
+    z-index: -1;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    overflow: hidden;
+    background-image: url("../../../assets/images/background.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.player {
+    width: 1278px;
+    height: auto;
+
+    visibility: visible;
+    margin: auto;
+    position: absolute;
+
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}

@@ -111,19 +111,20 @@ module.exports = function makeWebpackConfig(options) {
         loaders:[
             {
                 test: /\.js?$/, // Transform all .js files required somewhere within an entry point...
-                loaders: ['react-hot', 'babel'],
+                loaders: ['react-hot', 'babel','required'],
                 exclude: /(node_modules|bower_components)/,
                 include: path.join(__dirname, '../app')
             },
             {
                 // ASSET LOADER
-                // Reference: https://github.com/webpack/file-loader
-                // Copy png, jpg, jpeg, gif, svg, woff, woff2, ttf, eot files to output
-                // Rename the file using the asset hash
-                // Pass along the updated reference to your code
-                // You can add here any file extension you want to get copied to your output
                 test: /\.(png|jpg|jpeg|gif)$/,
                 loader: 'file?name=images/[name].[ext]',
+                exclude: /(node_modules|bower_components)/
+            },
+            {
+                // ASSET LOADER
+                test: /\.(mp4|webm|ogg)$/,
+                loader: 'file?name=video/[name].[ext]',
                 exclude: /(node_modules|bower_components)/
             },
             {
@@ -151,7 +152,7 @@ module.exports = function makeWebpackConfig(options) {
 
     var cssLoader = {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!postcss-loader")
+        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss')
     };
 
     // Skip loading css in test mode
