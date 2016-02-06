@@ -152,7 +152,7 @@ module.exports = function makeWebpackConfig(options) {
 
     var cssLoader = {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?postcss&modules&importLoaders=2&localIdentName=[local]___[hash:base64:5]')
+        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&localIdentName=[local]___[hash:base64:5]!postcss')
     };
 
     // Skip loading css in test mode
