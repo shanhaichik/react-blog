@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import {wrapper} from '../style/app.css';
+import { wrapper } from './wrapper.css';
 
 
 export default class Wrapper extends React.Component {
