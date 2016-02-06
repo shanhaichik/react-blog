@@ -10,7 +10,7 @@ export default class Main extends Component {
                 <div styleName='snippet'>
                     <ul>
                         <li styleName="snippet__class">.Alexander .Dukhovnyak <span>&#123;</span></li>
-                        <li styleName="snippet__code">content: 'Человек не стар, пока он чему-то учится!'</li>
+                        <li styleName="snippet__code">content: ' Человек не стар, пока он чему-то учится! '</li>
                         <li styleName="snippet__code">size: '28лет'</li>
                         <li styleName="snippet__close">&#125;</li>
                     </ul>

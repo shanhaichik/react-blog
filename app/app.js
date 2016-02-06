@@ -1,3 +1,9 @@
+
+/*
+ * Main CSS
+ * */
+import style from './style/app.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import BrowserHistory from 'react-router/lib/BrowserHistory';
@@ -6,12 +12,17 @@ import FontFaceObserver  from 'fontfaceobserver';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+
+const openSansObserver = new FontFaceObserver('Roboto', {});
+
+openSansObserver.check().then(() => {
+    document.body.classList.add(style['js-roboto-loaded']);
+}, () => {
+    document.body.classList.remove(style['js-roboto-loaded']);
+});
+
 import Root from 'Root';
 
-/*
- * Main CSS
- * */
-import './style/app.css';
 
 /*
 * Enable Browser History
