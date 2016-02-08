@@ -11,6 +11,7 @@ export default class Main extends Component {
                     <ul>
                         <li styleName="snippet__class">.Alexander .Dukhovnyak <span>&#123;</span></li>
                         <li styleName="snippet__code">position: Отец Разработчик Наставник;</li>
+                        <li styleName="snippet__code">age: 28;</li>
                         <li styleName="snippet__code">display:&nbsp;
                             <a href="http://vk.com/duhovnyak" target="_blank">VK</a>&nbsp;
                             <a href="https://github.com/shanhaichik" target="_blank">Github</a>;
