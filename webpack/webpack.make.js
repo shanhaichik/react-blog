@@ -214,7 +214,9 @@ module.exports = function makeWebpackConfig(options) {
     // Clean build
     if (BUILD || DEV) {
         config.plugins.push(
-            new clean([ '../static'])
+            new clean(['static'], {
+                root: path.resolve(__dirname, '../')
+            })
         );
     }
 

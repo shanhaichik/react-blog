@@ -1,10 +1,8 @@
 'use strict';
 
-
-var app = require('koa')();
-var router = require("koa-router")();
+const app = require('koa')();
+const router = require("koa-router")();
 const path = require("path");
-const serve = require("koa-static-cache");
 const session = require("koa-generic-session");
 const responseTime = require("koa-response-time");
 const logger = require("koa-logger");
@@ -13,12 +11,19 @@ const compress = require("koa-compress");
 const errorHandler = require("koa-error");
 const bodyParser = require("koa-bodyparser");
 const redisStore = require('koa-redis');
+const serve = require('koa-static');
 
 const STATIC_FILES_MAP = {};
+const SERVE_OPTIONS = { maxAge: 365 * 24 * 60 * 60 };
+
 const env = process.env.NODE_ENV || 'development';
 
-//?
-app.keys = ['Some_Secret_Key', 'Very_Interesting_Keys'];
+
+
+/*
+* https://github.com/koajs/static
+* */
+app.use(serve(__dirname + '/static'));
 
 /*
 * https://www.npmjs.com/package/koa-logger
@@ -33,29 +38,21 @@ if (env !== "test") {
 app.use(errorHandler());
 
 
-/*if (config.app.env === "production") {
-    app.use(serve(path.join(config.app.root, "build", "public"), SERVE_OPTIONS, STATIC_FILES_MAP));
-} else {
-    app.use(require("koa-proxy")({
-        host: "http://localhost:2992",
-        match: /^\/_assets\//,
-    }));
-}*/
-
-
+//?
+app.keys = ['Some_Secret_Key', 'Very_Interesting_Keys'];
 /*
 * https://www.npmjs.com/package/koa-redis
 * https://www.npmjs.com/package/koa-generic-session
 * */
-/*app.use(session({
- key: "koareactfullexample.sid",
- store: redisStore({})
- }));*/
+app.use(session({
+     store: redisStore()
+ }));
 
 /*
 * https://www.npmjs.com/package/koa-bodyparser
 * */
 app.use(bodyParser());
+
 
 
 /*
