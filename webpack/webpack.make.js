@@ -116,15 +116,18 @@ module.exports = function makeWebpackConfig(options) {
                 include: path.join(__dirname, '../app')
             },
             {
-                // ASSET LOADER
                 test: /\.(png|jpg|jpeg|gif)$/,
                 loader: 'file?name=images/[name].[ext]',
                 exclude: /(node_modules|bower_components)/
             },
             {
-                // ASSET LOADER
                 test: /\.(mp4|webm|ogg)$/,
                 loader: 'file?name=video/[name].[ext]',
+                exclude: /(node_modules|bower_components)/
+            },
+            {
+                test: /\.(html)$/,
+                loader: 'file?name=html/[name].[ext]',
                 exclude: /(node_modules|bower_components)/
             },
             {
@@ -262,6 +265,7 @@ module.exports = function makeWebpackConfig(options) {
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, '../app/index.html'),
                 inject: 'body',
+                filename:'html/index.html',
                 minify:  { // Minifying it while it is parsed
                     removeComments: true,
                     collapseWhitespace: true,

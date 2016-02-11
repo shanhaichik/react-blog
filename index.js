@@ -9,10 +9,11 @@ if(process.env.NODE_ENV !== 'production') {
         publicPath: configWebpack.output.publicPath,
         hot: true,
         inline: false,
-        historyApiFallback: true,
+        historyApiFallback: false,
         quiet: true,
         noInfo: false
-    }).listen(3000, 'localhost', function (err, result) {
+
+}).listen(3000, 'localhost', function (err, result) {
         if (err) {
             console.log(err);
         } else {
@@ -21,12 +22,13 @@ if(process.env.NODE_ENV !== 'production') {
     });
 }
 
-/*if (!module.parent) {
+if (!module.parent) {
     app.listen(7000, function (err) {
         if (err) {
             console.log('Произошла ошибка в Listen');
             process.exit(10);
         }
-        console.log(config.notice);
     });
-}*/
+
+    console.log('Запустились на 7000');
+}
