@@ -1,3 +1,5 @@
+const app = require('./server');
+
 if(process.env.NODE_ENV !== 'production') {
     var webpack = require('webpack');
     var WebpackDevServer = require('webpack-dev-server');
@@ -19,9 +21,8 @@ if(process.env.NODE_ENV !== 'production') {
     });
 }
 
-/*
-if (!module.parent) {
-    server.listen(config.port, function (err) {
+/*if (!module.parent) {
+    app.listen(7000, function (err) {
         if (err) {
             console.log('Произошла ошибка в Listen');
             process.exit(10);
