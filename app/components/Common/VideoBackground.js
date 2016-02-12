@@ -23,13 +23,12 @@ export default class VideoBackground extends Component {
         const source = ['mp4','webm','ogg'].map(type => (<source
             src={require(`../../../assets/video/${this.props.video}.${type}`)}
             type={`video/${type}`}
-            style={{'display': this.state.play ? 'block': 'none'}}
             key={type} />)
         );
 
         return (
             <div styleName="background">
-                <video autoPlay loop styleName="player" onLoadedData={this.canPlay.bind(this)}>
+                <video autoPlay loop styleName="player" style={{'display': this.state.play ? 'block': 'none'}} onLoadedData={this.canPlay.bind(this)}>
                     {
                         source
                     }
