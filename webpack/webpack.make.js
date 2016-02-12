@@ -1,12 +1,10 @@
 var webpack           = require('webpack'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    precss            = require('precss'),
     autoprefixer      = require('autoprefixer'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     postcssImport     = require('postcss-import'),
     clean             = require('clean-webpack-plugin'),
     path              = require('path'),
-    PostCssVars       = require('postcss-simple-vars'),
     PostCssFocus      = require('postcss-focus'),
     PostCssReporter   = require('postcss-reporter');
 
@@ -178,8 +176,6 @@ module.exports = function makeWebpackConfig(options) {
                     files.forEach(this.addDependency);
                 }.bind(this)
             }),
-            PostCssVars,
-            precss,
             PostCssFocus,
             autoprefixer({browsers: ['last 2 versions']}),
             PostCssReporter({ // This plugin makes sure we get warnings in the console
