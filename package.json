@@ -24,7 +24,6 @@
     "koa-router": "5.3.0",
     "koa-static": "^2.0.0",
     "lodash": "^3.10.1",
-    "npm": "^3.7.1",
     "react": "^0.14.5",
     "react-dom": "^0.14.5",
     "react-redux": "^4.0.6",
@@ -88,7 +87,7 @@
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm test -- --watch",
     "dev": "npm run start & webpack --config ./webpack/webpack.dev.js --progress --watch --colors",
-    "build": "webpack --config ./webpack/webpack.build.js --bail --colors -p",
+    "build": "NODE_ENV=production webpack --config ./webpack/webpack.build.js --bail --colors -p",
     "start": "NODE_ENV=development node index.js",
     "prod": "NODE_ENV=production node index.js"
   }

@@ -6,8 +6,8 @@ const path = require("path");
 const session = require("koa-generic-session");
 const responseTime = require("koa-response-time");
 const logger = require("koa-logger");
+const compress = require('koa-gzip');
 const views = require("co-views");
-const compress = require("koa-compress");
 const errorHandler = require("koa-error");
 const bodyParser = require("koa-bodyparser");
 const redisStore = require('koa-redis');
@@ -18,7 +18,7 @@ const SERVE_OPTIONS = { maxAge: 365 * 24 * 60 * 60 };
 
 const env = process.env.NODE_ENV || 'development';
 
-
+app.use(compress());
 
 /*
 * https://github.com/koajs/static
@@ -52,6 +52,7 @@ app.use(session({
 * https://www.npmjs.com/package/koa-bodyparser
 * */
 app.use(bodyParser());
+app.use(responseTime());
 
 
 
@@ -67,14 +68,27 @@ app.use(function *(next) {
     yield next;
 });
 
-app.use(compress());
-app.use(responseTime());
+
+
+/*
+* Error handler
+* */
+app.use(function *(next){
+    try{
+        yield next;
+    } catch (err) {
+        this.type = 'json';
+        this.status = err.status || 500;
+        this.body = { 'error' : err.message};
+    }
+});
 
 /**
  *
  * https://www.npmjs.com/package/koa-router
  */
 router.get("/", function *(next) {
+    this.compress = true;
     this.type = "html";
     this.body = yield this.render("index");
 });
@@ -82,5 +96,8 @@ router.get("/", function *(next) {
 
 app.use(router.routes())
    .use(router.allowedMethods());
+
+
+
 
 module.exports = app;
