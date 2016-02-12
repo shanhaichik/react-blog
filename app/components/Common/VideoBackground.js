@@ -9,11 +9,27 @@ export default class VideoBackground extends Component {
         video: PropTypes.string.isRequired
     };
 
+    state = {
+      play: false
+    };
+
+    canPlay(e) {
+        this.setState({
+            play: true
+        });
+    }
+
     render() {
-        const source = ['mp4','webm','ogg'].map(type => (<source src={require(`../../../assets/video/${this.props.video}.${type}`)} type={`video/${type}`} key={type} />));
+        const source = ['mp4','webm','ogg'].map(type => (<source
+            src={require(`../../../assets/video/${this.props.video}.${type}`)}
+            type={`video/${type}`}
+            style={{'display': this.state.play ? 'block': 'none'}}
+            key={type} />)
+        );
+
         return (
             <div styleName="background">
-                <video autoPlay loop styleName="player">
+                <video autoPlay loop styleName="player" onLoadedData={this.canPlay.bind(this)}>
                     {
                         source
                     }
