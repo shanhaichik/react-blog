@@ -15,8 +15,7 @@
 }
 
 .player {
-    width: 1278px;
-    height: auto;
+    width: 100%;
 
     visibility: visible;
     margin: auto;
