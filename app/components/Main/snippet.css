@@ -1,0 +1,43 @@
+.snippet {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    margin: auto;
+
+    width: 579px;
+    height: 150px;
+
+    color: rgba(255,255,255, .65);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.snippet__class,
+.snippet__close {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.snippet__class span,
+.snippet__close span {
+    font-weight: 400;
+}
+.snippet__code {
+    margin-left: 50px;
+    padding: 3px;
+
+    font-size: 20px;
+}
+.snippet__code a {
+    color: rgba(255,255,255, .75);
+    transition: color .5s;
+}
+.snippet__code a:hover {
+    text-decoration: none;
+    color: rgba(255,255,255, 1);
+}
+
+.snippet__close {
+
+}
